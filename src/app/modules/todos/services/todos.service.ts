@@ -29,4 +29,8 @@ export class TodosService {
     });
     this.todos$.next(updateTodos);
   }
+
+  changeFilter(filterName: FilterEnum) {
+    this.filter$.next(filterName)
+  }
 }
