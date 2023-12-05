@@ -10,8 +10,9 @@ import {FilterEnum} from "../../types/filter.enum";
 })
 export class MainComponent {
   visibleTodos$: Observable<ITodo[]>;
-  noTodoClass$: Observable<boolean>
-  isAllTodosSelected$: Observable<boolean>
+  noTodoClass$: Observable<boolean>;
+  isAllTodosSelected$: Observable<boolean>;
+  editingId: string | null = null;
 
   constructor(private todosService:TodosService) {
     //check that all todos is completed and to do checkbox grey or dark
@@ -38,5 +39,9 @@ export class MainComponent {
   toggleAllTodos(event: Event): void {
     const target = event.target as HTMLInputElement;
     this.todosService.toggleAll(target.checked)
+  }
+
+  setEditingId(editingId: string | null) {
+    this.editingId = editingId;
   }
 }
